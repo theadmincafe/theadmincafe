@@ -29,3 +29,5 @@ New-WebGlobalModule -Name "TokenCacheModule" -Image "%windir%\System32\inetsrv\c
 Quelle: https://techcommunity.microsoft.com/t5/exchange-team-blog/released-october-2023-exchange-server-security-updates/ba-p/3950647
 
 ![Update Pfad](exchange_october_2023_update_upgrade_path.jpg)
+
+Moin Markus.
