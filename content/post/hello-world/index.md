@@ -15,19 +15,17 @@ Von Microsoft wurden neue Sicherheitsupdates für Exchange Server 2016 und Excha
 
 Über die folgenden Links geht es zu den Updates:
 
-- Exchange Server 2019 CU12: https://www.microsoft.com/en-us/download/details.aspx?id=105638
-- Exchange Server 2019 CU13: https://www.microsoft.com/en-us/download/details.aspx?id=105637
+- Exchange Server 2019 [CU12](https://www.microsoft.com/en-us/download/details.aspx?id=105638) 
+- Exchange Server 2019 [CU13](https://www.microsoft.com/en-us/download/details.aspx?id=105637)
 
-- Exchange Server 2016 CU23: https://www.microsoft.com/en-us/download/details.aspx?id=105639
+- Exchange Server 2016 [CU23](https://www.microsoft.com/en-us/download/details.aspx?id=105639)
 
 Nach der Installation der neuesten Updates vom Oktober kann das IIS Token Cache Modul anschließend mit folgendem Befehl wieder aktiviert werden:
 
 	
-New-WebGlobalModule -Name "TokenCacheModule" -Image "%windir%\System32\inetsrv\cachtokn.dll"
+`New-WebGlobalModule -Name "TokenCacheModule" -Image "%windir%\System32\inetsrv\cachtokn.dll"`
 
 
 Quelle: https://techcommunity.microsoft.com/t5/exchange-team-blog/released-october-2023-exchange-server-security-updates/ba-p/3950647
 
 ![Update Pfad](exchange_october_2023_update_upgrade_path.jpg)
-
-Moin Markus.
