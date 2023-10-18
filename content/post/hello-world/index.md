@@ -17,8 +17,12 @@ Von Microsoft wurden neue Sicherheitsupdates für Exchange Server 2016 und Excha
 
 Über die folgenden Links geht es zu den Updates:
 
+## <h2>Updates für Exchange Server 2019</h2>
+
 - Exchange Server 2019 [CU12](https://www.microsoft.com/en-us/download/details.aspx?id=105638) 
 - Exchange Server 2019 [CU13](https://www.microsoft.com/en-us/download/details.aspx?id=105637)
+
+## <h2>Update für Exchange Server 2016</h2>
 
 - Exchange Server 2016 [CU23](https://www.microsoft.com/en-us/download/details.aspx?id=105639)
 
