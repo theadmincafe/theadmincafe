@@ -11,7 +11,7 @@ tags:
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
-<h1>Exchange Update Oktober 2023</h1>
+## <h1>Exchange Update Oktober 2023</h1>
 
 Von Microsoft wurden neue Sicherheitsupdates für Exchange Server 2016 und Exchange Server 2019 veröffentlicht. Das Update schließt die Remote Execution Schwachstelle CVE-2023-36778 und bietet eine bessere Lösung für die Schwachstelle CVE-2023-21709 vom August. Mit dem August Sicherheitsupdate traten viele Probleme auf und das Update wurde zeitweise zurückgezogen. Das Update aus dem Oktober für CVE-2023-36434 für Windows Server liefert nun eine verbesserte Lösung als das IIS Token Cache Module zu deaktivieren. Durch das Update im August wurde dieses nämlich deaktiviert. Nach der Installation des Updates kann der IIS Token Cache wieder aktiviert werden.
 
