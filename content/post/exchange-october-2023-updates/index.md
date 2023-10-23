@@ -8,7 +8,6 @@ categories:
     - Exchange
 tags:
     - Exchange
-weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
 ## <h2>Exchange Update Oktober 2023</h2>
