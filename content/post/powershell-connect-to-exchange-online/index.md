@@ -6,9 +6,11 @@ image: cover.jpg
 tags: 
     - Exchange
     - M365
+    - Powershell
 categories:
     - Exchange
     - M365
+    - Powershell
 ---
 
 <!--more-->
