@@ -48,7 +48,7 @@ Sollte bei euch folgende Fehlermeldung erscheinen, dann müsst ihr zuerst die Ex
 Dies klappt mit folgendem Befehl:
 `Set-ExecutionPolicy Unrestricted`
 
-![Anpassung Execution Policy](Connect_Exchange_Online_1.jpg)
+![Anpassung Execution Policy](Connect_Exchange_Online_3.jpg)
 
 Anschließend klappt der obere "Import-Module ExchangeOnlineManagement" Befehl.
 
