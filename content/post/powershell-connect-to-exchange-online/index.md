@@ -1,6 +1,6 @@
 ---
 title: Verbindung zu Exchange Online mit Powershell
-date: 2023-23-10 00:00:00+0000
+date: 2023-10-23 00:00:00+0000
 description: Verbindung zu Exchange Online mit Powershell
 image: cover.jpg
 tags: 
