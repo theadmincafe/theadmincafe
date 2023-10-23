@@ -1,7 +1,7 @@
 ---
 title: Exchange Server
 description: Neue Sicherheitsupdates (Oktober 2023)
-slug: hello-world
+slug: exchange-october-2023-updates
 date: 2023-10-18 00:00:00+0000
 image: cover.jpg
 categories:
