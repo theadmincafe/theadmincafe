@@ -2,6 +2,7 @@
 title: Verbindung zu Exchange Online mit Powershell
 date: 2023-23-10
 description: Verbindung zu Exchange Online mit Powershell
+image: cover.jpg
 tags: 
     - Exchange
     - M365
