@@ -72,3 +72,5 @@ Testweise geben wir folgenden Befehl ein um uns alle Postfächer anzeigen zu las
 `Get-Mailbox`
 
 ![Erfolgreiche Abfrage](Connect_Exchange_Online_6.jpg)
+
+Das wars dann auch mit dem Artikel.
