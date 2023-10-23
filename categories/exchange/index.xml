@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Exchange on Lukas</title><link>https://theadmincafe.ch/categories/exchange/</link><description>Recent content in Exchange on Lukas</description><generator>Hugo -- gohugo.io</generator><language>de-de</language><lastBuildDate>Mon, 23 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://theadmincafe.ch/categories/exchange/index.xml" rel="self" type="application/rss+xml"/><item><title>Verbindung zu Exchange Online mit Powershell</title><link>https://theadmincafe.ch/p/connect-exchange-online-powershell/</link><pubDate>Mon, 23 Oct 2023 00:00:00 +0000</pubDate><guid>https://theadmincafe.ch/p/connect-exchange-online-powershell/</guid><description>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/cover.jpg" alt="Featured image of post Verbindung zu Exchange Online mit Powershell" />&lt;p>In diesem Artikel wird kurz beschrieben, wie eine Verbindung zu Exchange Online bei M365 über Powershell hergestellt werden kann.&lt;/p>
+&lt;p>Zunächst öffnen wir Powershell als Administrator.&lt;/p>
+&lt;p>Nun installieren wir das Exchange Online Management Module.&lt;/p>
+&lt;p>Um das Modul für alle Benutzer auf dem Computer zu installieren, geben wir folgenden Befehl ein:
+&lt;code>Install-Module -Name ExchangeOnlineManagement&lt;/code>&lt;/p>
+&lt;p>Um das Modul nur für den aktuellen Benutzer zu installieren, geben wir folgenden Befehl ein:
+&lt;code>Install-Module -Name ExchangeOnlineManagement -Scope CurrentUser&lt;/code>&lt;/p>
+&lt;p>Abfragen bezüglich der NuGet-Anbieter und nicht vertrauenswürdigen Repositories akzeptieren wir mit &amp;ldquo;J&amp;rdquo;.&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_1.JPG"
+width="859"
+height="297"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_1_hu22bfc805187c8a1b786e4049052238b0_82135_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_1_hu22bfc805187c8a1b786e4049052238b0_82135_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="So sollte die Ausgabe aussehen"
+class="gallery-image"
+data-flex-grow="289"
+data-flex-basis="694px"
+>&lt;/p>
+&lt;p>Gelegentlich sollte in regelmäßigen Zeitabständen das Exchange Online Management Module aktualisiert werden.
+Dies kann mit folgendem Befehl durchgeführt werden:&lt;/p>
+&lt;p>Um das Modul für alle Benutzer auf dem Computer zu aktualisieren, geben wir folgenden Befehl ein:
+&lt;code>Update-Module -Name ExchangeOnlineManagement&lt;/code>&lt;/p>
+&lt;p>Um das Modul nur für den aktuellen Benutzer zu aktualisieren, geben wir folgenden Befehl ein:
+&lt;code>Update-Module -Name ExchangeOnlineManagement -Scope CurrentUser&lt;/code>&lt;/p>
+&lt;p>Nun müssen wir das Exchange Online Management Modul laden, bzw. importieren.
+Dies tun wir mit folgendem Befehl:
+&lt;code>Import-Module ExchangeOnlineManagement&lt;/code>&lt;/p>
+&lt;p>Sollte bei euch folgende Fehlermeldung erscheinen, dann müsst ihr zuerst die Execution Policy auf dem Computer anpassen.
+&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_2.JPG"
+width="859"
+height="200"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_2_hu22bfc805187c8a1b786e4049052238b0_48230_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_2_hu22bfc805187c8a1b786e4049052238b0_48230_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Fehlermeldung bezüglich Scripts"
+class="gallery-image"
+data-flex-grow="429"
+data-flex-basis="1030px"
+>&lt;/p>
+&lt;p>Dies klappt mit folgendem Befehl:
+&lt;code>Set-ExecutionPolicy Unrestricted&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_3.JPG"
+width="859"
+height="200"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_3_hu46319f75aef3823f7bc1305bfd4cc6e4_47501_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_3_hu46319f75aef3823f7bc1305bfd4cc6e4_47501_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Anpassung Execution Policy"
+class="gallery-image"
+data-flex-grow="429"
+data-flex-basis="1030px"
+>&lt;/p>
+&lt;p>Anschließend klappt der obere &amp;ldquo;Import-Module ExchangeOnlineManagement&amp;rdquo; Befehl.&lt;/p>
+&lt;p>Wenn das Modul importiert wurde, können wir uns mit folgendem Befehl nun mit Exchange Online verbinden:
+&lt;code>Connect-ExchangeOnline -UserPrincipalName E-Mail-Adresse-@-Des-Globalen-Administrators&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_4.JPG"
+width="859"
+height="200"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_4_hue325a49e79cf4671203dbbcabe3d1c2b_30460_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_4_hue325a49e79cf4671203dbbcabe3d1c2b_30460_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Verbindung zu Exchange Online herstellen"
+class="gallery-image"
+data-flex-grow="429"
+data-flex-basis="1030px"
+>&lt;/p>
+&lt;p>Nach der Absetzung des Befehls öffnet sich ein Loginfenster. Hier müssen wir das Kennwort für den M365-Administrator eingeben.&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_5.JPG"
+width="562"
+height="349"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_5_hue325a49e79cf4671203dbbcabe3d1c2b_32448_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_5_hue325a49e79cf4671203dbbcabe3d1c2b_32448_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Loginfenster M365"
+class="gallery-image"
+data-flex-grow="161"
+data-flex-basis="386px"
+>&lt;/p>
+&lt;p>Nach der Passworteingabe sind wir erfolgreich verbunden.&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_6.JPG"
+width="859"
+height="302"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_6_hue325a49e79cf4671203dbbcabe3d1c2b_111526_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_6_hue325a49e79cf4671203dbbcabe3d1c2b_111526_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="So sollte Powershell nach erfolgreichem Login bei M365 aussehen"
+class="gallery-image"
+data-flex-grow="284"
+data-flex-basis="682px"
+>&lt;/p>
+&lt;p>Nun testen wir noch schnell, ob wir erfolgreich verbunden sind und Exchange Online Befehle auch funktionieren.
+Testweise geben wir folgenden Befehl ein um uns alle Postfächer anzeigen zu lassen:
+&lt;code>Get-Mailbox&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_7.JPG"
+width="859"
+height="264"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_7_hue325a49e79cf4671203dbbcabe3d1c2b_105200_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_7_hue325a49e79cf4671203dbbcabe3d1c2b_105200_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Erfolgreiche Abfrage"
+class="gallery-image"
+data-flex-grow="325"
+data-flex-basis="780px"
+>&lt;/p>
+&lt;p>Das wars dann auch mit dem Artikel.&lt;/p></description></item><item><title>Exchange Server</title><link>https://theadmincafe.ch/p/exchange-october-2023-updates/</link><pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate><guid>https://theadmincafe.ch/p/exchange-october-2023-updates/</guid><description>&lt;img src="https://theadmincafe.ch/p/exchange-october-2023-updates/cover.jpg" alt="Featured image of post Exchange Server" />&lt;h2 id="h2exchange-update-oktober-2023h2">&lt;h2>Exchange Update Oktober 2023&lt;/h2>&lt;/h2>
+&lt;p>Von Microsoft wurden neue Sicherheitsupdates für Exchange Server 2016 und Exchange Server 2019 veröffentlicht. Das Update schließt die Remote Execution Schwachstelle CVE-2023-36778 und bietet eine bessere Lösung für die Schwachstelle CVE-2023-21709 vom August. Mit dem August Sicherheitsupdate traten viele Probleme auf und das Update wurde zeitweise zurückgezogen. Das Update aus dem Oktober für CVE-2023-36434 für Windows Server liefert nun eine verbesserte Lösung als das IIS Token Cache Module zu deaktivieren. Durch das Update im August wurde dieses nämlich deaktiviert. Nach der Installation des Updates kann der IIS Token Cache wieder aktiviert werden.&lt;/p>
+&lt;p>Über die folgenden Links geht es zu den Updates:&lt;/p>
+&lt;h2 id="h3updates-für-exchange-server-2019h3">&lt;h3>Updates für Exchange Server 2019&lt;/h3>&lt;/h2>
+&lt;ul>
+&lt;li>Exchange Server 2019 &lt;a class="link" href="https://www.microsoft.com/en-us/download/details.aspx?id=105638" target="_blank" rel="noopener"
+>CU12&lt;/a>&lt;/li>
+&lt;li>Exchange Server 2019 &lt;a class="link" href="https://www.microsoft.com/en-us/download/details.aspx?id=105637" target="_blank" rel="noopener"
+>CU13&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="h3update-für-exchange-server-2016h3">&lt;h3>Update für Exchange Server 2016&lt;/h3>&lt;/h2>
+&lt;ul>
+&lt;li>Exchange Server 2016 &lt;a class="link" href="https://www.microsoft.com/en-us/download/details.aspx?id=105639" target="_blank" rel="noopener"
+>CU23&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Nach der Installation der neuesten Updates vom Oktober kann das IIS Token Cache Modul anschließend mit folgendem Befehl wieder aktiviert werden:&lt;/p>
+&lt;p>&lt;code>New-WebGlobalModule -Name &amp;quot;TokenCacheModule&amp;quot; -Image &amp;quot;%windir%\System32\inetsrv\cachtokn.dll&amp;quot;&lt;/code>&lt;/p>
+&lt;h2 id="h3quelleh3">&lt;h3>Quelle&lt;/h3>&lt;/h2>
+&lt;p>Quelle: &lt;a class="link" href="https://techcommunity.microsoft.com/t5/exchange-team-blog/released-october-2023-exchange-server-security-updates/ba-p/3950647" target="_blank" rel="noopener"
+>Microsoft Technet Artikel&lt;/a>&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/exchange-october-2023-updates/exchange_october_2023_update_upgrade_path.jpg"
+width="998"
+height="263"
+srcset="https://theadmincafe.ch/p/exchange-october-2023-updates/exchange_october_2023_update_upgrade_path_hu46d5466400840817eb482dba41c75048_49258_480x0_resize_q75_box.jpg 480w, https://theadmincafe.ch/p/exchange-october-2023-updates/exchange_october_2023_update_upgrade_path_hu46d5466400840817eb482dba41c75048_49258_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Update Pfad"
+class="gallery-image"
+data-flex-grow="379"
+data-flex-basis="910px"
+>&lt;/p></description></item></channel></rss>

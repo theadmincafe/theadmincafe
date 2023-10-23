@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Lukas</title><link>https://theadmincafe.ch/post/</link><description>Recent content in Posts on Lukas</description><generator>Hugo -- gohugo.io</generator><language>de-de</language><lastBuildDate>Mon, 23 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://theadmincafe.ch/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Verbindung zu Exchange Online mit Powershell</title><link>https://theadmincafe.ch/p/connect-exchange-online-powershell/</link><pubDate>Mon, 23 Oct 2023 00:00:00 +0000</pubDate><guid>https://theadmincafe.ch/p/connect-exchange-online-powershell/</guid><description>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/cover.jpg" alt="Featured image of post Verbindung zu Exchange Online mit Powershell" />&lt;p>In diesem Artikel wird kurz beschrieben, wie eine Verbindung zu Exchange Online bei M365 über Powershell hergestellt werden kann.&lt;/p>
+&lt;p>Zunächst öffnen wir Powershell als Administrator.&lt;/p>
+&lt;p>Nun installieren wir das Exchange Online Management Module.&lt;/p>
+&lt;p>Um das Modul für alle Benutzer auf dem Computer zu installieren, geben wir folgenden Befehl ein:
+&lt;code>Install-Module -Name ExchangeOnlineManagement&lt;/code>&lt;/p>
+&lt;p>Um das Modul nur für den aktuellen Benutzer zu installieren, geben wir folgenden Befehl ein:
+&lt;code>Install-Module -Name ExchangeOnlineManagement -Scope CurrentUser&lt;/code>&lt;/p>
+&lt;p>Abfragen bezüglich der NuGet-Anbieter und nicht vertrauenswürdigen Repositories akzeptieren wir mit &amp;ldquo;J&amp;rdquo;.&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_1.JPG"
+width="859"
+height="297"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_1_hu22bfc805187c8a1b786e4049052238b0_82135_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_1_hu22bfc805187c8a1b786e4049052238b0_82135_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="So sollte die Ausgabe aussehen"
+class="gallery-image"
+data-flex-grow="289"
+data-flex-basis="694px"
+>&lt;/p>
+&lt;p>Gelegentlich sollte in regelmäßigen Zeitabständen das Exchange Online Management Module aktualisiert werden.
+Dies kann mit folgendem Befehl durchgeführt werden:&lt;/p>
+&lt;p>Um das Modul für alle Benutzer auf dem Computer zu aktualisieren, geben wir folgenden Befehl ein:
+&lt;code>Update-Module -Name ExchangeOnlineManagement&lt;/code>&lt;/p>
+&lt;p>Um das Modul nur für den aktuellen Benutzer zu aktualisieren, geben wir folgenden Befehl ein:
+&lt;code>Update-Module -Name ExchangeOnlineManagement -Scope CurrentUser&lt;/code>&lt;/p>
+&lt;p>Nun müssen wir das Exchange Online Management Modul laden, bzw. importieren.
+Dies tun wir mit folgendem Befehl:
+&lt;code>Import-Module ExchangeOnlineManagement&lt;/code>&lt;/p>
+&lt;p>Sollte bei euch folgende Fehlermeldung erscheinen, dann müsst ihr zuerst die Execution Policy auf dem Computer anpassen.
+&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_2.JPG"
+width="859"
+height="200"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_2_hu22bfc805187c8a1b786e4049052238b0_48230_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_2_hu22bfc805187c8a1b786e4049052238b0_48230_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Fehlermeldung bezüglich Scripts"
+class="gallery-image"
+data-flex-grow="429"
+data-flex-basis="1030px"
+>&lt;/p>
+&lt;p>Dies klappt mit folgendem Befehl:
+&lt;code>Set-ExecutionPolicy Unrestricted&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_3.JPG"
+width="859"
+height="200"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_3_hu46319f75aef3823f7bc1305bfd4cc6e4_47501_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_3_hu46319f75aef3823f7bc1305bfd4cc6e4_47501_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Anpassung Execution Policy"
+class="gallery-image"
+data-flex-grow="429"
+data-flex-basis="1030px"
+>&lt;/p>
+&lt;p>Anschließend klappt der obere &amp;ldquo;Import-Module ExchangeOnlineManagement&amp;rdquo; Befehl.&lt;/p>
+&lt;p>Wenn das Modul importiert wurde, können wir uns mit folgendem Befehl nun mit Exchange Online verbinden:
+&lt;code>Connect-ExchangeOnline -UserPrincipalName E-Mail-Adresse-@-Des-Globalen-Administrators&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_4.JPG"
+width="859"
+height="200"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_4_hue325a49e79cf4671203dbbcabe3d1c2b_30460_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_4_hue325a49e79cf4671203dbbcabe3d1c2b_30460_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Verbindung zu Exchange Online herstellen"
+class="gallery-image"
+data-flex-grow="429"
+data-flex-basis="1030px"
+>&lt;/p>
+&lt;p>Nach der Absetzung des Befehls öffnet sich ein Loginfenster. Hier müssen wir das Kennwort für den M365-Administrator eingeben.&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_5.JPG"
+width="562"
+height="349"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_5_hue325a49e79cf4671203dbbcabe3d1c2b_32448_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_5_hue325a49e79cf4671203dbbcabe3d1c2b_32448_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Loginfenster M365"
+class="gallery-image"
+data-flex-grow="161"
+data-flex-basis="386px"
+>&lt;/p>
+&lt;p>Nach der Passworteingabe sind wir erfolgreich verbunden.&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_6.JPG"
+width="859"
+height="302"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_6_hue325a49e79cf4671203dbbcabe3d1c2b_111526_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_6_hue325a49e79cf4671203dbbcabe3d1c2b_111526_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="So sollte Powershell nach erfolgreichem Login bei M365 aussehen"
+class="gallery-image"
+data-flex-grow="284"
+data-flex-basis="682px"
+>&lt;/p>
+&lt;p>Nun testen wir noch schnell, ob wir erfolgreich verbunden sind und Exchange Online Befehle auch funktionieren.
+Testweise geben wir folgenden Befehl ein um uns alle Postfächer anzeigen zu lassen:
+&lt;code>Get-Mailbox&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_7.JPG"
+width="859"
+height="264"
+srcset="https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_7_hue325a49e79cf4671203dbbcabe3d1c2b_105200_480x0_resize_q75_box.JPG 480w, https://theadmincafe.ch/p/connect-exchange-online-powershell/Connect_Exchange_Online_7_hue325a49e79cf4671203dbbcabe3d1c2b_105200_1024x0_resize_q75_box.JPG 1024w"
+loading="lazy"
+alt="Erfolgreiche Abfrage"
+class="gallery-image"
+data-flex-grow="325"
+data-flex-basis="780px"
+>&lt;/p>
+&lt;p>Das wars dann auch mit dem Artikel.&lt;/p></description></item><item><title>Exchange Server</title><link>https://theadmincafe.ch/p/exchange-october-2023-updates/</link><pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate><guid>https://theadmincafe.ch/p/exchange-october-2023-updates/</guid><description>&lt;img src="https://theadmincafe.ch/p/exchange-october-2023-updates/cover.jpg" alt="Featured image of post Exchange Server" />&lt;h2 id="h2exchange-update-oktober-2023h2">&lt;h2>Exchange Update Oktober 2023&lt;/h2>&lt;/h2>
+&lt;p>Von Microsoft wurden neue Sicherheitsupdates für Exchange Server 2016 und Exchange Server 2019 veröffentlicht. Das Update schließt die Remote Execution Schwachstelle CVE-2023-36778 und bietet eine bessere Lösung für die Schwachstelle CVE-2023-21709 vom August. Mit dem August Sicherheitsupdate traten viele Probleme auf und das Update wurde zeitweise zurückgezogen. Das Update aus dem Oktober für CVE-2023-36434 für Windows Server liefert nun eine verbesserte Lösung als das IIS Token Cache Module zu deaktivieren. Durch das Update im August wurde dieses nämlich deaktiviert. Nach der Installation des Updates kann der IIS Token Cache wieder aktiviert werden.&lt;/p>
+&lt;p>Über die folgenden Links geht es zu den Updates:&lt;/p>
+&lt;h2 id="h3updates-für-exchange-server-2019h3">&lt;h3>Updates für Exchange Server 2019&lt;/h3>&lt;/h2>
+&lt;ul>
+&lt;li>Exchange Server 2019 &lt;a class="link" href="https://www.microsoft.com/en-us/download/details.aspx?id=105638" target="_blank" rel="noopener"
+>CU12&lt;/a>&lt;/li>
+&lt;li>Exchange Server 2019 &lt;a class="link" href="https://www.microsoft.com/en-us/download/details.aspx?id=105637" target="_blank" rel="noopener"
+>CU13&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="h3update-für-exchange-server-2016h3">&lt;h3>Update für Exchange Server 2016&lt;/h3>&lt;/h2>
+&lt;ul>
+&lt;li>Exchange Server 2016 &lt;a class="link" href="https://www.microsoft.com/en-us/download/details.aspx?id=105639" target="_blank" rel="noopener"
+>CU23&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Nach der Installation der neuesten Updates vom Oktober kann das IIS Token Cache Modul anschließend mit folgendem Befehl wieder aktiviert werden:&lt;/p>
+&lt;p>&lt;code>New-WebGlobalModule -Name &amp;quot;TokenCacheModule&amp;quot; -Image &amp;quot;%windir%\System32\inetsrv\cachtokn.dll&amp;quot;&lt;/code>&lt;/p>
+&lt;h2 id="h3quelleh3">&lt;h3>Quelle&lt;/h3>&lt;/h2>
+&lt;p>Quelle: &lt;a class="link" href="https://techcommunity.microsoft.com/t5/exchange-team-blog/released-october-2023-exchange-server-security-updates/ba-p/3950647" target="_blank" rel="noopener"
+>Microsoft Technet Artikel&lt;/a>&lt;/p>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/exchange-october-2023-updates/exchange_october_2023_update_upgrade_path.jpg"
+width="998"
+height="263"
+srcset="https://theadmincafe.ch/p/exchange-october-2023-updates/exchange_october_2023_update_upgrade_path_hu46d5466400840817eb482dba41c75048_49258_480x0_resize_q75_box.jpg 480w, https://theadmincafe.ch/p/exchange-october-2023-updates/exchange_october_2023_update_upgrade_path_hu46d5466400840817eb482dba41c75048_49258_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Update Pfad"
+class="gallery-image"
+data-flex-grow="379"
+data-flex-basis="910px"
+>&lt;/p></description></item><item><title>Image gallery</title><link>https://theadmincafe.ch/p/image-gallery/</link><pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate><guid>https://theadmincafe.ch/p/image-gallery/</guid><description>&lt;img src="https://theadmincafe.ch/p/image-gallery/2.jpg" alt="Featured image of post Image gallery" />&lt;p>Hugo theme Stack supports the creation of interactive image galleries using Markdown. It&amp;rsquo;s powered by &lt;a class="link" href="https://photoswipe.com/" target="_blank" rel="noopener"
+>PhotoSwipe&lt;/a> and its syntax was inspired by &lt;a class="link" href="https://typlog.com/" target="_blank" rel="noopener"
+>Typlog&lt;/a>.&lt;/p>
+&lt;p>To use this feature, the image must be in the same directory as the Markdown file, as it uses Hugo&amp;rsquo;s page bundle feature to read the dimensions of the image. &lt;strong>External images are not supported.&lt;/strong>&lt;/p>
+&lt;h2 id="syntax">Syntax&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">![&lt;span class="nt">Image 1&lt;/span>](&lt;span class="na">1.jpg&lt;/span>) ![&lt;span class="nt">Image 2&lt;/span>](&lt;span class="na">2.jpg&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="result">Result&lt;/h2>
+&lt;p>&lt;img src="https://theadmincafe.ch/p/image-gallery/1.jpg"
+width="2000"
+height="1400"
+srcset="https://theadmincafe.ch/p/image-gallery/1_hudd2e8259c20ed0dcaa856c253552e90f_14625_480x0_resize_q75_box.jpg 480w, https://theadmincafe.ch/p/image-gallery/1_hudd2e8259c20ed0dcaa856c253552e90f_14625_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Image 1"
+class="gallery-image"
+data-flex-grow="142"
+data-flex-basis="342px"
+> &lt;img src="https://theadmincafe.ch/p/image-gallery/2.jpg"
+width="1500"
+height="2250"
+srcset="https://theadmincafe.ch/p/image-gallery/2_hubce42636ecacc1a380b462f3110efcec_37455_480x0_resize_q75_box.jpg 480w, https://theadmincafe.ch/p/image-gallery/2_hubce42636ecacc1a380b462f3110efcec_37455_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Image 2"
+class="gallery-image"
+data-flex-grow="66"
+data-flex-basis="160px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@mymind" target="_blank" rel="noopener"
+>mymind&lt;/a> and &lt;a class="link" href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener"
+>Luke Chesser&lt;/a> on &lt;a class="link" href="https://unsplash.com/" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Shortcodes</title><link>https://theadmincafe.ch/p/shortcodes/</link><pubDate>Fri, 25 Aug 2023 00:00:00 +0000</pubDate><guid>https://theadmincafe.ch/p/shortcodes/</guid><description>&lt;img src="https://theadmincafe.ch/cover.jpg" alt="Featured image of post Shortcodes" />&lt;p>For more details, check out the &lt;a class="link" href="https://stack.jimmycai.com/writing/shortcodes" target="_blank" rel="noopener"
+>documentation&lt;/a>.&lt;/p>
+&lt;h2 id="bilibili-video">Bilibili video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1d4411N7zD"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="tencent-video">Tencent video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://v.qq.com/txp/iframe/player.html?vid=g0014r3khdw&amp;auto=0"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="youtube-video">YouTube video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/0qwALOOvUik"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="generic-video-file">Generic video file&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;video
+controls
+src="https://www.w3schools.com/tags/movie.mp4"
+>
+&lt;p>
+Your browser doesn't support HTML5 video. Here is a
+&lt;a href="https://www.w3schools.com/tags/movie.mp4">link to the video&lt;/a> instead.
+&lt;/p>
+&lt;/video>
+&lt;/div>
+&lt;h2 id="gist">Gist&lt;/h2>
+&lt;script type="application/javascript" src="https://gist.github.com/CaiJimmy/e2751a943de10b2a5b3a8a6c2120cb86.js">&lt;/script>
+&lt;h2 id="gitlab">GitLab&lt;/h2>
+&lt;script
+type="application/javascript"
+src="https://gitlab.com/-/snippets/2589724.js"
+>&lt;/script>
+&lt;h2 id="quote">Quote&lt;/h2>
+&lt;blockquote>
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p>&lt;span class="cite">&lt;span>― &lt;/span>&lt;span>A famous person, &lt;/span>&lt;a href="https://en.wikipedia.org/wiki/Book">&lt;cite>The book they wrote&lt;/cite>&lt;/a>&lt;/span>&lt;/blockquote>
+&lt;hr>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@codioful" target="_blank" rel="noopener"
+>Codioful&lt;/a> on &lt;a class="link" href="https://unsplash.com/photos/WDSN62Qdxuk" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Math Typesetting</title><link>https://theadmincafe.ch/p/math-typesetting/</link><pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate><guid>https://theadmincafe.ch/p/math-typesetting/</guid><description>&lt;p>Stack has built-in support for math typesetting using &lt;a class="link" href="https://katex.org/" target="_blank" rel="noopener"
+>KaTeX&lt;/a>.&lt;/p>
+&lt;p>&lt;strong>It&amp;rsquo;s not enabled by default side-wide,&lt;/strong> but you can enable it for individual posts by adding &lt;code>math: true&lt;/code> to the front matter. Or you can enable it side-wide by adding &lt;code>math = true&lt;/code> to the &lt;code>params.article&lt;/code> section in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;h2 id="inline-math">Inline math&lt;/h2>
+&lt;p>This is an inline mathematical expression: $\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="block-math">Block math&lt;/h2>
+&lt;p>$$
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>$$
+f(x) = \int_{-\infty}^\infty\hat f(\xi),e^{2 \pi i \xi x},d\xi
+$$&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
