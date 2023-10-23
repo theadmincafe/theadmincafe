@@ -71,6 +71,6 @@ Nun testen wir noch schnell, ob wir erfolgreich verbunden sind und Exchange Onli
 Testweise geben wir folgenden Befehl ein um uns alle Postfächer anzeigen zu lassen:
 `Get-Mailbox`
 
-![Erfolgreiche Abfrage](Connect_Exchange_Online_6.jpg)
+![Erfolgreiche Abfrage](Connect_Exchange_Online_7.jpg)
 
 Das wars dann auch mit dem Artikel.
